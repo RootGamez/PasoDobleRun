@@ -132,6 +132,77 @@ body {
   display: none;
 }
 
+.prose-pasodoble {
+  color: var(--color-text-muted);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+
+.prose-pasodoble h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-pasodoble h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-pasodoble p {
+  margin-bottom: 1.25rem;
+}
+
+.prose-pasodoble strong {
+  color: var(--color-text);
+}
+
+.prose-pasodoble a {
+  color: var(--color-sky);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose-pasodoble ul,
+.prose-pasodoble ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+.prose-pasodoble ul {
+  list-style: disc;
+}
+
+.prose-pasodoble ol {
+  list-style: decimal;
+}
+
+.prose-pasodoble li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+.prose-pasodoble li::marker {
+  color: var(--color-sky);
+}
+
+.prose-pasodoble blockquote {
+  border-left: 3px solid var(--color-sky);
+  background: var(--color-ink-soft);
+  border-radius: 0 0.75rem 0.75rem 0;
+  padding: 1rem 1.5rem;
+  margin: 1.75rem 0;
+  color: var(--color-text);
+  font-style: italic;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

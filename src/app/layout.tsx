@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Sora } from "next/font/google";
+import localFont from "next/font/local";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFAB } from "@/components/layout/WhatsAppFAB";
@@ -7,16 +7,18 @@ import { LenisProvider } from "@/components/layout/LenisProvider";
 import { site } from "@/data/site";
 import "@/styles/globals.css";
 
-const sora = Sora({
-  subsets: ["latin"],
+const sora = localFont({
+  src: "../fonts/sora-variable.woff2",
   variable: "--font-sora",
   display: "swap",
+  weight: "100 800",
 });
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: "../fonts/inter-variable.woff2",
   variable: "--font-inter",
   display: "swap",
+  weight: "100 900",
 });
 
 export const metadata: Metadata = {
