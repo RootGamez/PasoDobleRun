@@ -1,30 +1,12 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import type { Post, PostCategory, PostMeta } from "./post-types";
 
-export type PostCategory = "fuerza" | "running" | "fisioterapia";
-
-export type PostMeta = {
-  title: string;
-  slug: string;
-  date: string;
-  category: PostCategory;
-  instagramUrl: string;
-  cover: string;
-  excerpt: string;
-  references: string[];
-  readingMinutes: number;
-};
-
-export type Post = PostMeta & { content: string };
+export type { PostCategory, PostMeta, Post };
+export { categoryLabels } from "./post-types";
 
 const postsDirectory = path.join(process.cwd(), "content", "posts");
-
-export const categoryLabels: Record<PostCategory, string> = {
-  fuerza: "Fuerza",
-  running: "Running",
-  fisioterapia: "Fisioterapia",
-};
 
 function parsePost(filename: string): Post {
   const raw = fs.readFileSync(path.join(postsDirectory, filename), "utf8");

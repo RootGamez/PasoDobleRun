@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { categoryLabels, type PostCategory, type PostMeta } from "@/lib/posts";
+import { categoryLabels, type PostCategory, type PostMeta } from "@/lib/post-types";
 
 const filters: Array<{ value: PostCategory | "todos"; label: string }> = [
   { value: "todos", label: "Todos" },
@@ -31,7 +31,7 @@ export function ForumIndex({ posts }: { posts: PostMeta[] }) {
 
   return (
     <div>
-      <div className="flex flex-wrap justify-center gap-3" role="group" aria-label="Filtrar por categoría">
+      <div className="flex flex-wrap justify-center gap-3" role="group" aria-label="Filtrar por categoria">
         {filters.map((filter) => (
           <button
             key={filter.value}
@@ -69,7 +69,7 @@ export function ForumIndex({ posts }: { posts: PostMeta[] }) {
                     src={post.cover}
                     alt=""
                     loading="lazy"
-                    className="size-full object-cover transition-transform duration-700 group-hover:scale-108"
+                    className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <span className="absolute left-4 top-4 rounded-full bg-ink/80 px-3 py-1 font-display text-xs font-bold uppercase tracking-wider text-sky backdrop-blur-sm">
                     {categoryLabels[post.category]}
@@ -89,7 +89,7 @@ export function ForumIndex({ posts }: { posts: PostMeta[] }) {
                       {post.readingMinutes} min
                     </span>
                     <span className="flex items-center gap-1 font-semibold text-sky transition-transform group-hover:translate-x-1">
-                      Leer artículo <ArrowRight className="size-3.5" aria-hidden />
+                      Leer articulo <ArrowRight className="size-3.5" aria-hidden />
                     </span>
                   </div>
                 </div>
@@ -101,7 +101,7 @@ export function ForumIndex({ posts }: { posts: PostMeta[] }) {
 
       {visible.length === 0 && (
         <p className="mt-16 text-center text-text-muted">
-          Aún no hay artículos en esta categoría. Muy pronto publicaremos más contenido.
+          Aun no hay articulos en esta categoria. Muy pronto publicaremos mas contenido.
         </p>
       )}
     </div>
