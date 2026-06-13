@@ -49,7 +49,7 @@ export function Methodology() {
         <StaggerGroup className="mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line lg:grid-cols-4">
           {stats.map((stat) => (
             <StaggerItem key={stat.label} className="bg-ink-soft px-6 py-10 text-center">
-              <p className="font-display text-4xl font-extrabold text-sky sm:text-5xl">
+              <p className="font-display text-4xl font-extrabold text-gold sm:text-5xl">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </p>
               <p className="mt-2 text-xs font-medium uppercase tracking-wider text-text-muted sm:text-sm">

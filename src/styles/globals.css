@@ -1,15 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #0a0e14;
-  --color-ink-soft: #11161f;
-  --color-sky: #38bdf8;
-  --color-sky-bright: #7dd3fc;
-  --color-deep: #0c4a6e;
-  --color-deep-2: #082f49;
-  --color-line: #1e2a38;
-  --color-text: #e6edf3;
-  --color-text-muted: #93a4b5;
+  /* Brand palette (moodboard) */
+  --color-navy: #083a4f;
+  --color-gold: #a58d66;
+  --color-aqua: #c0d5d6;
+  --color-teal: #407e8c;
+  --color-sand: #e5e1dd;
+
+  /* Semantic tokens — navy-anchored dark theme */
+  --color-ink: #041a22;        /* page background — deep navy-black */
+  --color-ink-soft: #0a2c39;   /* panels / cards */
+  --color-sky: #407e8c;        /* primary accent — teal */
+  --color-sky-bright: #c0d5d6; /* bright accent / hover — aqua */
+  --color-deep: #0b3d4f;       /* gradient anchor — navy */
+  --color-deep-2: #062a38;     /* darker gradient anchor */
+  --color-line: #15394a;       /* borders / hairlines */
+  --color-text: #e7e2dd;       /* warm sand text */
+  --color-text-muted: #93a7ab; /* muted teal-gray */
+
+  /* Accent glow shadows — derived from the teal token, single source of truth */
+  --shadow-glow-xs: 0 0 12px 0 color-mix(in srgb, var(--color-teal) 80%, transparent);
+  --shadow-glow-sm: 0 0 24px -6px color-mix(in srgb, var(--color-teal) 65%, transparent);
+  --shadow-glow: 0 0 32px -6px color-mix(in srgb, var(--color-teal) 70%, transparent);
+  --shadow-glow-lg: 0 0 48px -8px color-mix(in srgb, var(--color-teal) 80%, transparent);
+  --shadow-glow-fab: 0 8px 28px -4px color-mix(in srgb, var(--color-teal) 60%, transparent);
 
   --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -77,11 +92,11 @@ body {
 }
 
 .gradient-radial-sky {
-  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(56, 189, 248, 0.12), transparent 70%);
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in srgb, var(--color-teal) 16%, transparent), transparent 70%);
 }
 
 .text-gradient-sky {
-  background: linear-gradient(92deg, var(--color-sky-bright), var(--color-sky) 45%, #0ea5e9);
+  background: linear-gradient(92deg, var(--color-aqua), var(--color-teal) 50%, var(--color-gold));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -101,8 +116,8 @@ body {
 }
 
 .card-glow:hover {
-  border-color: rgba(56, 189, 248, 0.45);
-  box-shadow: 0 0 40px -12px rgba(56, 189, 248, 0.35);
+  border-color: color-mix(in srgb, var(--color-teal) 50%, transparent);
+  box-shadow: 0 0 40px -12px color-mix(in srgb, var(--color-teal) 40%, transparent);
   transform: translateY(-4px);
 }
 
@@ -117,7 +132,7 @@ body {
   position: absolute;
   height: 1px;
   width: 30vw;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.4), transparent);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-aqua) 40%, transparent), transparent);
   animation: speed-line 3.4s linear infinite;
 }
 

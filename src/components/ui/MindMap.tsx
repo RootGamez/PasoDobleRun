@@ -21,7 +21,7 @@ type MethodNodeData = { label: string; variant: MethodNode["variant"] };
 type FlowNode = Node<MethodNodeData>;
 
 const variantStyles: Record<NonNullable<MethodNode["variant"]>, string> = {
-  core: "border-sky bg-deep/80 text-sky-bright shadow-[0_0_32px_-8px_rgba(56,189,248,0.6)]",
+  core: "border-sky bg-deep/80 text-sky-bright shadow-glow-sm",
   step: "border-line bg-ink-soft/90 text-text hover:border-sky/60",
   result: "border-sky-bright/50 bg-deep-2/90 text-text",
 };
@@ -61,7 +61,7 @@ export function MindMap() {
       methodEdges.map((e) => ({
         ...e,
         animated: true,
-        style: { stroke: "rgba(56,189,248,0.45)", strokeWidth: 1.5 },
+        style: { stroke: "var(--color-teal)", strokeOpacity: 0.5, strokeWidth: 1.5 },
       })),
     []
   );
@@ -87,7 +87,7 @@ export function MindMap() {
         preventScrolling={false}
         proOptions={{ hideAttribution: true }}
       >
-        <Background variant={BackgroundVariant.Dots} color="#1e2a38" gap={24} size={1.5} />
+        <Background variant={BackgroundVariant.Dots} color="var(--color-line)" gap={24} size={1.5} />
       </ReactFlow>
 
       <p className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 text-center text-xs text-text-muted">

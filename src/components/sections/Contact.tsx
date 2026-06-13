@@ -157,7 +157,7 @@ export function Contact() {
               <div className="flex flex-col gap-3 sm:flex-row">
                 <button
                   type="submit"
-                  className="inline-flex min-h-13 flex-1 cursor-pointer items-center justify-center gap-2 rounded-full bg-sky px-7 py-3.5 font-display text-sm font-bold uppercase tracking-wider text-ink transition-all hover:bg-sky-bright hover:shadow-[0_0_32px_-6px_rgba(56,189,248,0.7)] active:scale-95"
+                  className="inline-flex min-h-13 flex-1 cursor-pointer items-center justify-center gap-2 rounded-full bg-sky px-7 py-3.5 font-display text-sm font-bold uppercase tracking-wider text-ink transition-all hover:bg-sky-bright hover:shadow-glow active:scale-95"
                 >
                   <MessageCircle className="size-5" aria-hidden />
                   Continuar en WhatsApp

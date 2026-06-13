@@ -55,7 +55,7 @@ export function Navbar() {
             href={buildWhatsAppLink(`Hola, quiero más información sobre ${site.name}.`)}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-10 items-center gap-2 rounded-full bg-sky px-5 py-2 font-display text-xs font-bold uppercase tracking-wider text-ink transition-all hover:bg-sky-bright hover:shadow-[0_0_24px_-4px_rgba(56,189,248,0.7)] active:scale-95"
+            className="inline-flex min-h-10 items-center gap-2 rounded-full bg-sky px-5 py-2 font-display text-xs font-bold uppercase tracking-wider text-ink transition-all hover:bg-sky-bright hover:shadow-glow-sm active:scale-95"
           >
             <MessageCircle className="size-4" aria-hidden />
             WhatsApp

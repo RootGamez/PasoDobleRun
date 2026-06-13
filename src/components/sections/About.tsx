@@ -100,10 +100,10 @@ export function About() {
               {milestones.map((m) => (
                 <StaggerItem key={m.year} className="relative">
                   <span
-                    className="absolute -left-[33px] top-1.5 size-3 rounded-full bg-sky shadow-[0_0_12px_rgba(56,189,248,0.8)]"
+                    className="absolute -left-[33px] top-1.5 size-3 rounded-full bg-sky shadow-glow-xs"
                     aria-hidden
                   />
-                  <p className="font-display text-sm font-bold uppercase tracking-widest text-sky">
+                  <p className="font-display text-sm font-bold uppercase tracking-widest text-gold">
                     {m.year}
                   </p>
                   <p className="mt-1.5 text-sm leading-relaxed text-text-muted">{m.text}</p>

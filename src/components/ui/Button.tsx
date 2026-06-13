@@ -14,7 +14,7 @@ const base =
 
 const variants = {
   primary:
-    "bg-sky text-ink hover:bg-sky-bright hover:shadow-[0_0_32px_-6px_rgba(56,189,248,0.7)]",
+    "bg-sky text-ink hover:bg-sky-bright hover:shadow-glow",
   ghost:
     "border border-line text-text hover:border-sky hover:text-sky-bright",
 };

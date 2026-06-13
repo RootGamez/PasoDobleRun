@@ -11,7 +11,7 @@ export function SectionHeading({ kicker, title, description, align = "center" }:
   const alignCls = align === "center" ? "text-center mx-auto" : "text-left";
   return (
     <Reveal className={`max-w-2xl ${alignCls}`}>
-      <p className="font-display text-xs font-semibold uppercase tracking-[0.3em] text-sky">
+      <p className="font-display text-xs font-semibold uppercase tracking-[0.3em] text-gold">
         {kicker}
       </p>
       <h2 className="text-balance mt-4 font-display text-3xl font-bold leading-tight text-text sm:text-4xl lg:text-5xl">

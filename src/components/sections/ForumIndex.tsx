@@ -40,7 +40,7 @@ export function ForumIndex({ posts }: { posts: PostMeta[] }) {
             aria-pressed={active === filter.value}
             className={`min-h-11 cursor-pointer rounded-full px-6 py-2.5 font-display text-sm font-semibold transition-all active:scale-95 ${
               active === filter.value
-                ? "bg-sky text-ink shadow-[0_0_24px_-6px_rgba(56,189,248,0.6)]"
+                ? "bg-sky text-ink shadow-glow-sm"
                 : "border border-line text-text-muted hover:border-sky/50 hover:text-text"
             }`}
           >

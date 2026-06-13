@@ -106,7 +106,7 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-center px-5 sm:px-8">
         <div data-hero-intro>
-          <p className="font-display text-xs font-semibold uppercase tracking-[0.4em] text-sky-bright sm:text-sm">
+          <p className="font-display text-xs font-semibold uppercase tracking-[0.4em] text-gold sm:text-sm">
             Fisioterapia · Fuerza · Running · Coaching
           </p>
           <h1 className="mt-6 font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-text sm:text-7xl lg:text-8xl">
@@ -160,7 +160,7 @@ export function Hero() {
                   data-hero-step
                   className="absolute inset-0 flex max-w-2xl flex-col justify-center opacity-0"
                 >
-                  <p className="font-display text-xs font-bold uppercase tracking-[0.35em] text-sky">
+                  <p className="font-display text-xs font-bold uppercase tracking-[0.35em] text-gold">
                     {step.kicker}
                   </p>
                   <h2 className="text-balance mt-4 font-display text-3xl font-bold leading-tight text-text sm:text-5xl">

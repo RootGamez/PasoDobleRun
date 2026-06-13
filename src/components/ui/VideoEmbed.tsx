@@ -57,7 +57,7 @@ export function VideoEmbed({ src, poster, title, className = "" }: VideoEmbedPro
             />
           )}
           <span className="absolute inset-0 bg-ink/40 transition-colors group-hover:bg-ink/25" />
-          <span className="absolute left-1/2 top-1/2 flex size-18 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-sky text-ink shadow-[0_0_48px_-8px_rgba(56,189,248,0.8)] transition-transform group-hover:scale-110">
+          <span className="absolute left-1/2 top-1/2 flex size-18 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-sky text-ink shadow-glow-lg transition-transform group-hover:scale-110">
             <Play className="ml-1 size-7" aria-hidden />
           </span>
         </button>
