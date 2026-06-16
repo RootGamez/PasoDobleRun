@@ -5,6 +5,7 @@ import { ArrowDown, MessageCircle } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/Button";
+import { LoopVideo } from "@/components/ui/LoopVideo";
 import { site } from "@/data/site";
 import { media } from "@/data/media";
 import { heroSteps } from "@/data/methodology";
@@ -80,16 +81,10 @@ export function Hero() {
   return (
     <section ref={rootRef} className="relative h-svh overflow-hidden" aria-label="Presentación de Pasodoble Run">
       <div className="absolute inset-0" data-hero-video>
-        <video
+        <LoopVideo
           className="size-full object-cover"
           src={media.heroVideo.src}
           poster={media.heroVideo.poster}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-hidden
         />
         <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/55 to-ink" />
         <div className="absolute inset-0 bg-gradient-to-r from-deep-2/70 via-transparent to-transparent" />

@@ -5,10 +5,18 @@ const pexelsVideoPoster = (id: number, w = 1600) =>
   `https://images.pexels.com/videos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
 
 export const media = {
+  // Hero: toma aérea de un corredor en pista (Pexels). Remoto, sin WebM.
   heroVideo: {
-    src: "https://videos.pexels.com/video-files/8533111/8533111-uhd_2560_1440_25fps.mp4",
-    poster: pexelsVideoPoster(8533111),
-    credit: "Video de KoolShooters en Pexels",
+    src: "https://videos.pexels.com/video-files/7179290/7179290-hd_1920_1080_25fps.mp4",
+    poster: pexelsVideoPoster(7179290),
+    credit: "Video de Pexels",
+  },
+  // Loop vertical (reel) de estiramientos — sección Metodología. Local en public/media.
+  methodologyVideo: {
+    src: "/media/estiramientos.mp4",
+    webm: "/media/estiramientos.webm",
+    poster: "/media/estiramientos-poster.webp",
+    credit: "Pasodoble Run",
   },
   heroSteps: {
     fisioterapia: pexelsPhoto(20860622),
@@ -19,12 +27,12 @@ export const media = {
     fuerza: pexelsPhoto(5327456),
     running: pexelsVideoPoster(5310965),
     fisioterapia: pexelsPhoto(5793918),
-    coaching: pexelsVideoPoster(8459963),
+    coaching: pexelsPhoto(5646004),
   },
+  // Fotos verticales de los dos fundadores (public/media).
   about: {
-    team: pexelsVideoPoster(7179290),
-    training: pexelsPhoto(18502875),
-    therapy: pexelsPhoto(4506166),
+    founderOne: "/media/duenos.webp",
+    founderTwo: "/media/duenos-2.webp",
   },
   posts: {
     fuerza: pexelsPhoto(2261481),

@@ -1,6 +1,6 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { MindMap } from "@/components/ui/MindMap";
-import { VideoEmbed } from "@/components/ui/VideoEmbed";
+import { LoopVideo } from "@/components/ui/LoopVideo";
 import { Accordion } from "@/components/ui/Accordion";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion/Reveal";
 import { Counter } from "@/components/motion/Counter";
@@ -26,23 +26,25 @@ export function Methodology() {
         <div className="mt-20 grid items-center gap-10 lg:grid-cols-2">
           <Reveal>
             <h3 className="text-balance font-display text-2xl font-bold text-text sm:text-3xl">
-              El método explicado por quien lo aplica
+              El método, en movimiento
             </h3>
             <p className="mt-4 leading-relaxed text-text-muted">
-              Nada de promesas vacías: en este video te contamos cómo evaluamos, cómo planificamos y
-              por qué la fuerza es el eje de todo lo que hacemos — tanto si vienes por una lesión
-              como si vas por tu próxima marca personal.
+              Nada de promesas vacías: así entrenamos. Movilidad, fuerza y técnica trabajadas en cada
+              sesión — tanto si vienes por una lesión como si vas por tu próxima marca personal.
             </p>
             <p className="mt-4 text-sm text-text-muted">
               Más contenido en nuestro Instagram y en el foro científico.
             </p>
           </Reveal>
           <Reveal delay={0.15} y={40}>
-            <VideoEmbed
-              src={media.heroVideo.src}
-              poster={media.heroVideo.poster}
-              title="Presentación de la metodología Pasodoble Run"
-            />
+            <div className="relative mx-auto aspect-[9/16] w-full max-w-[300px] overflow-hidden rounded-2xl border border-line bg-ink-soft shadow-2xl">
+              <LoopVideo
+                className="size-full object-cover"
+                src={media.methodologyVideo.src}
+                webm={media.methodologyVideo.webm}
+                poster={media.methodologyVideo.poster}
+              />
+            </div>
           </Reveal>
         </div>
 

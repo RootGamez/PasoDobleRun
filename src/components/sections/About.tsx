@@ -53,20 +53,25 @@ export function About() {
 
         <div className="mt-16 grid items-start gap-10 lg:grid-cols-2">
           <Reveal y={40}>
-            <div className="relative">
-              <img
-                src={media.about.team}
-                alt="Atleta entrenando en pista"
-                loading="lazy"
-                className="aspect-[4/3] w-full rounded-2xl border border-line object-cover"
-              />
-              <img
-                src={media.about.therapy}
-                alt="Sesión de fisioterapia con banda elástica"
-                loading="lazy"
-                className="absolute -bottom-8 -right-3 hidden w-44 rotate-3 rounded-xl border border-line object-cover shadow-2xl sm:block sm:w-56"
-              />
-            </div>
+            <figure>
+              <div className="grid grid-cols-2 gap-4">
+                <img
+                  src={media.about.founderOne}
+                  alt="Fundador de Pasodoble Run"
+                  loading="lazy"
+                  className="aspect-[3/4] w-full rounded-2xl border border-line object-cover object-top"
+                />
+                <img
+                  src={media.about.founderTwo}
+                  alt="Cofundador de Pasodoble Run"
+                  loading="lazy"
+                  className="aspect-[3/4] w-full rounded-2xl border border-line object-cover object-top sm:mt-10"
+                />
+              </div>
+              <figcaption className="mt-5 text-center font-display text-xs font-bold uppercase tracking-[0.3em] text-gold">
+                Nuestros fundadores
+              </figcaption>
+            </figure>
             <div className="mt-14 rounded-2xl border border-line bg-ink-soft p-6">
               <p className="flex items-center gap-2 font-display text-sm font-bold uppercase tracking-widest text-sky">
                 <GraduationCap className="size-5" aria-hidden />
