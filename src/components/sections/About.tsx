@@ -6,13 +6,13 @@ import { media } from "@/data/media";
 const values = [
   {
     icon: Compass,
-    title: "Mision",
-    text: "Acompanar a cada persona — desde el paciente con dolor hasta el atleta competitivo — con un proceso integrado de fisioterapia, fuerza y running basado en la mejor evidencia disponible.",
+    title: "Misión",
+    text: "Acompañar a cada persona — desde el paciente con dolor hasta el atleta competitivo — con un proceso integrado de fisioterapia, fuerza y running basado en la mejor evidencia disponible.",
   },
   {
     icon: Eye,
-    title: "Vision",
-    text: "Ser la referencia en Venezuela y Colombia de entrenamiento y rehabilitacion con criterio cientifico, demostrando que rendimiento y salud no son caminos separados.",
+    title: "Visión",
+    text: "Ser la referencia en Venezuela y Colombia de entrenamiento y rehabilitación con criterio científico, demostrando que rendimiento y salud no son caminos separados.",
   },
   {
     icon: HeartHandshake,
@@ -23,10 +23,10 @@ const values = [
 
 const team = [
   {
-    name: "Jeanpiero Navarro Pina",
+    name: "Jeanpiero Navarro Piña",
     role: "Fisioterapeuta & Coach — Cofundador",
     location: "Caracas, Venezuela",
-    bio: "Fisioterapeuta egresado de la Universidad Nacional Romulo Gallegos con enfoque en evaluacion del movimiento humano y rehabilitacion basada en evidencia. Cofundador y director de Motion Centro de Rehabilitacion y Alto Rendimiento (Los Palos Grandes, Caracas). Ex docente universitario en UNERG y ex fisioterapeuta y coach en el centro multidisciplinario Neuromovimiento.",
+    bio: "Fisioterapeuta egresado de la Universidad Nacional Rómulo Gallegos con enfoque en evaluación del movimiento humano y rehabilitación basada en evidencia. Cofundador y director de Motion Centro de Rehabilitación y Alto Rendimiento (Los Palos Grandes, Caracas). Ex docente universitario en UNERG y ex fisioterapeuta y coach en el centro multidisciplinario Neuromovimiento.",
     credentials: [
       "Lcdo. Fisioterapia — UNRG",
       "EXOS Coaching Methodology — Phoenix, AZ",
@@ -39,8 +39,8 @@ const team = [
   {
     name: "Luis Alejandro Sanchez Cardona",
     role: "Fisioterapeuta & Strength Coach — Cofundador",
-    location: "Bogota, Colombia",
-    bio: "Licenciado en Fisioterapia por la Universidad Arturo Michelena (Valencia) con mas de 4 anos de experiencia en rehabilitacion y acondicionamiento fisico de alto rendimiento. Fisioterapeuta del Carabobo Futbol Club durante 4 anos (2021-2025) y actualmente fisioterapeuta de Internacional de Bogota, equipo de primera division.",
+    location: "Bogotá, Colombia",
+    bio: "Licenciado en Fisioterapia por la Universidad Arturo Michelena (Valencia) con más de 4 años de experiencia en rehabilitación y acondicionamiento físico de alto rendimiento. Fisioterapeuta del Carabobo Fútbol Club durante 4 años (2021-2025) y actualmente fisioterapeuta de Internacional de Bogotá, equipo de primera división.",
     credentials: [
       "Lcdo. Fisioterapia — UAM, Venezuela",
       "EXOS Fitness & Performance Specialist (2022-2024)",
@@ -59,16 +59,16 @@ const milestones = [
     text: "Pasodoble Run nace de la conviccion compartida de Jeanpiero y Luis: la fisioterapia y el entrenamiento no deberian vivir en mundos separados.",
   },
   {
-    year: "Caracas y Bogota",
-    text: "Con base en ambas ciudades, el metodo llega a atletas venezolanos y colombianos: presencial, online y con el mismo criterio cientifico.",
+    year: "Caracas y Bogotá",
+    text: "Con base en ambas ciudades, el método llega a atletas venezolanos y colombianos: presencial, online y con el mismo criterio científico.",
   },
   {
     year: "La comunidad",
-    text: "Mas de 100 pacientes y atletas acompanados — desde recuperacion post-lesion hasta preparacion para competencia profesional.",
+    text: "Más de 100 pacientes y atletas acompañados — desde recuperación post-lesión hasta preparación para competencia profesional.",
   },
   {
     year: "Hoy",
-    text: "Seguimos creciendo: contenido cientifico en Instagram, foro educativo y programas presenciales y a distancia desde Caracas y Bogota.",
+    text: "Seguimos creciendo: contenido científico en Instagram, foro educativo y programas presenciales y a distancia desde Caracas y Bogotá.",
   },
 ] as const;
 
@@ -77,9 +77,9 @@ export function About() {
     <section id="nosotros" className="relative scroll-mt-20 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
-          kicker="Quienes somos"
-          title="Ciencia, sudor y proposito"
-          description="Dos fisioterapeutas con trayectoria en clubes profesionales y centros de alto rendimiento. Un solo metodo: evidencia, planificacion y resultados reales."
+          kicker="Quiénes somos"
+          title="Ciencia, sudor y propósito"
+          description="Dos fisioterapeutas con trayectoria en clubes profesionales y centros de alto rendimiento. Un solo método: evidencia, planificación y resultados reales."
         />
 
         <div className="mt-20 grid gap-8 lg:grid-cols-2">

@@ -31,7 +31,7 @@ export function ForumIndex({ posts }: { posts: PostMeta[] }) {
 
   return (
     <div>
-      <div className="flex flex-wrap justify-center gap-3" role="group" aria-label="Filtrar por categoria">
+      <div className="flex flex-wrap justify-center gap-3" role="group" aria-label="Filtrar por categoría">
         {filters.map((filter) => (
           <button
             key={filter.value}
@@ -89,7 +89,7 @@ export function ForumIndex({ posts }: { posts: PostMeta[] }) {
                       {post.readingMinutes} min
                     </span>
                     <span className="flex items-center gap-1 font-semibold text-sky transition-transform group-hover:translate-x-1">
-                      Leer articulo <ArrowRight className="size-3.5" aria-hidden />
+                      Leer artículo <ArrowRight className="size-3.5" aria-hidden />
                     </span>
                   </div>
                 </div>
@@ -101,7 +101,7 @@ export function ForumIndex({ posts }: { posts: PostMeta[] }) {
 
       {visible.length === 0 && (
         <p className="mt-16 text-center text-text-muted">
-          Aun no hay articulos en esta categoria. Muy pronto publicaremos mas contenido.
+          Aún no hay artículos en esta categoría. Muy pronto publicaremos más contenido.
         </p>
       )}
     </div>
