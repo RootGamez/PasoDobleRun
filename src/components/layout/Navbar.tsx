@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { navigation } from "@/data/navigation";
 import { site } from "@/data/site";
 import { openWhatsAppModal } from "@/lib/whatsapp-modal";
+import { LogoMark } from "@/components/ui/LogoMark";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -35,10 +36,13 @@ export function Navbar() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:h-20 sm:px-8">
         <Link
           href="/"
-          className="font-display text-lg font-bold tracking-tight text-text"
+          className="flex items-center gap-2.5"
           onClick={() => setOpen(false)}
         >
-          PASODOBLE<span className="text-sky"> RUN</span>
+          <LogoMark className="h-9 w-auto text-sky" />
+          <span className="font-display text-lg font-bold tracking-tight text-text">
+            PASODOBLE<span className="text-sky"> RUN</span>
+          </span>
         </Link>
 
         <div className="hidden items-center gap-8 lg:flex">

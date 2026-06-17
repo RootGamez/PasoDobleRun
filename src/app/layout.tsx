@@ -24,6 +24,10 @@ const inter = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  },
   title: {
     default: `${site.name} — ${site.tagline}`,
     template: `%s | ${site.name}`,

@@ -3,15 +3,19 @@ import { Instagram, Mail, MapPin, MessageCircle } from "lucide-react";
 import { footerLinks } from "@/data/navigation";
 import { site } from "@/data/site";
 import { WhatsAppTrigger } from "@/components/ui/WhatsAppTrigger";
+import { LogoMark } from "@/components/ui/LogoMark";
 
 export function Footer() {
   return (
     <footer className="relative border-t border-line bg-ink-soft">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-3">
         <div>
-          <p className="font-display text-xl font-bold text-text">
-            PASODOBLE<span className="text-sky"> RUN</span>
-          </p>
+          <div className="flex items-center gap-2.5">
+            <LogoMark className="h-10 w-auto text-sky" />
+            <p className="font-display text-xl font-bold text-text">
+              PASODOBLE<span className="text-sky"> RUN</span>
+            </p>
+          </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-text-muted">
             {site.tagline}. Entrena con criterio, corre sin dolor.
           </p>

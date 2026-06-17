@@ -1,5 +1,5 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { MindMap } from "@/components/ui/MindMap";
+import { MindMapClient } from "@/components/ui/MindMapClient";
 import { LoopVideo } from "@/components/ui/LoopVideo";
 import { Accordion } from "@/components/ui/Accordion";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion/Reveal";
@@ -20,7 +20,7 @@ export function Methodology() {
         />
 
         <Reveal className="mt-14" y={40}>
-          <MindMap />
+          <MindMapClient />
         </Reveal>
 
         <div className="mt-20 grid items-center gap-10 lg:grid-cols-2">

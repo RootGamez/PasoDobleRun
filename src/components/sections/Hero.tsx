@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { ArrowDown, MessageCircle } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,69 +13,77 @@ import { openWhatsAppModal } from "@/lib/whatsapp-modal";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Run synchronously during the commit/mutation phase (and its cleanup during
+// deletion) so GSAP reverts the pin BEFORE React removes the DOM on route
+// change. A plain useEffect cleanup is passive — it runs too late and React
+// crashes trying to removeChild a <section> GSAP still has inside a pin-spacer.
+// Falls back to useEffect on the server to avoid the SSR warning.
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
 export function Hero() {
   const rootRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const root = rootRef.current;
     if (!root) return;
 
-    const mm = gsap.matchMedia();
+    // Scope every animation/ScrollTrigger to this subtree so ctx.revert()
+    // can fully undo them — including removing the pin-spacer GSAP injects
+    // around the pinned <section> — before React unmounts on route change.
+    // Without this, React tries to removeChild a node GSAP has re-parented
+    // and crashes with "node to be removed is not a child of this node".
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
 
-    mm.add("(prefers-reduced-motion: no-preference)", () => {
-      const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
-      intro
-        .from("[data-hero-line]", { yPercent: 110, duration: 1, stagger: 0.12 })
-        .from("[data-hero-sub]", { opacity: 0, y: 24, duration: 0.8 }, "-=0.5")
-        .from("[data-hero-cta]", { opacity: 0, y: 20, duration: 0.7, stagger: 0.1 }, "-=0.4")
-        .from("[data-hero-scroll]", { opacity: 0, duration: 0.6 }, "-=0.2");
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
+        intro
+          .from("[data-hero-line]", { yPercent: 110, duration: 1, stagger: 0.12 })
+          .from("[data-hero-sub]", { opacity: 0, y: 24, duration: 0.8 }, "-=0.5")
+          .from("[data-hero-cta]", { opacity: 0, y: 20, duration: 0.7, stagger: 0.1 }, "-=0.4")
+          .from("[data-hero-scroll]", { opacity: 0, duration: 0.6 }, "-=0.2");
 
-      const steps = gsap.utils.toArray<HTMLElement>("[data-hero-step]");
-      const video = root.querySelector<HTMLElement>("[data-hero-video]");
-      const veil = root.querySelector<HTMLElement>("[data-hero-veil]");
-      const intro_content = root.querySelector<HTMLElement>("[data-hero-intro]");
-      const progress = root.querySelector<HTMLElement>("[data-hero-progress]");
+        const steps = gsap.utils.toArray<HTMLElement>("[data-hero-step]");
+        const video = root.querySelector<HTMLElement>("[data-hero-video]");
+        const veil = root.querySelector<HTMLElement>("[data-hero-veil]");
+        const intro_content = root.querySelector<HTMLElement>("[data-hero-intro]");
+        const progress = root.querySelector<HTMLElement>("[data-hero-progress]");
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: root,
-          start: "top top",
-          end: "+=320%",
-          scrub: 0.8,
-          pin: true,
-          anticipatePin: 1,
-        },
-      });
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: root,
+            start: "top top",
+            end: "+=320%",
+            scrub: 0.8,
+            pin: true,
+            anticipatePin: 1,
+          },
+        });
 
-      tl.to(intro_content, { opacity: 0, y: -80, duration: 1, ease: "power2.in" })
-        .to(veil, { opacity: 0.82, duration: 1 }, "<")
-        .to(video, { scale: 1.12, duration: 10, ease: "none" }, 0);
+        tl.to(intro_content, { opacity: 0, y: -80, duration: 1, ease: "power2.in" })
+          .to(veil, { opacity: 0.82, duration: 1 }, "<")
+          .to(video, { scale: 1.12, duration: 10, ease: "none" }, 0);
 
-      if (progress) {
-        tl.to(progress, { scaleY: 1, duration: steps.length * 3, ease: "none" }, 1);
-      }
-
-      steps.forEach((step, i) => {
-        const at = 1 + i * 3;
-        tl.fromTo(
-          step,
-          { opacity: 0, y: 70, filter: "blur(8px)" },
-          { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1, ease: "power2.out" },
-          at
-        );
-        if (i < steps.length - 1) {
-          tl.to(step, { opacity: 0, y: -70, filter: "blur(8px)", duration: 1, ease: "power2.in" }, at + 2);
+        if (progress) {
+          tl.to(progress, { scaleY: 1, duration: steps.length * 3, ease: "none" }, 1);
         }
+
+        steps.forEach((step, i) => {
+          const at = 1 + i * 3;
+          tl.fromTo(
+            step,
+            { opacity: 0, y: 70, filter: "blur(8px)" },
+            { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1, ease: "power2.out" },
+            at
+          );
+          if (i < steps.length - 1) {
+            tl.to(step, { opacity: 0, y: -70, filter: "blur(8px)", duration: 1, ease: "power2.in" }, at + 2);
+          }
+        });
       });
+    }, rootRef);
 
-      return () => {
-        tl.scrollTrigger?.kill();
-        tl.kill();
-        intro.kill();
-      };
-    });
-
-    return () => mm.revert();
+    return () => ctx.revert();
   }, []);
 
   return (
