@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   ReactFlow,
   Background,
@@ -26,10 +26,23 @@ const variantStyles: Record<NonNullable<MethodNode["variant"]>, string> = {
   result: "border-sky-bright/50 bg-deep-2/90 text-text",
 };
 
+// Mobile cards: keep the variants but readable as standalone cards.
+const cardStyles: Record<NonNullable<MethodNode["variant"]>, string> = {
+  core: "border-sky/70 bg-deep/50",
+  step: "border-line bg-ink-soft/80",
+  result: "border-sky-bright/50 bg-deep-2/60",
+};
+
+const cardLabelStyles: Record<NonNullable<MethodNode["variant"]>, string> = {
+  core: "text-sky-bright",
+  step: "text-text",
+  result: "text-sky-bright",
+};
+
 function MethodFlowNode({ data }: NodeProps<FlowNode>) {
   return (
     <div
-      className={`cursor-pointer rounded-xl border px-4 py-3 font-display text-xs font-semibold tracking-wide transition-all sm:text-sm ${
+      className={`cursor-pointer rounded-xl border px-5 py-4 text-center font-display text-sm font-semibold tracking-wide transition-all sm:px-6 sm:py-5 sm:text-base ${
         variantStyles[data.variant ?? "step"]
       }`}
     >
@@ -42,7 +55,43 @@ function MethodFlowNode({ data }: NodeProps<FlowNode>) {
 
 const nodeTypes: NodeTypes = { method: MethodFlowNode };
 
-export function MindMap() {
+/** True ≥768px. Initialised synchronously (component is client-only) to avoid a flash. */
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(() =>
+    typeof window !== "undefined" ? window.matchMedia("(min-width: 768px)").matches : false
+  );
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return isDesktop;
+}
+
+/** Mobile: a static, fully readable vertical stack — no xyflow, so it never
+ *  captures touch/scroll and the text stays large. */
+function MindMapStacked() {
+  return (
+    <ol className="space-y-4">
+      {methodNodes.map((n) => (
+        <li
+          key={n.id}
+          className={`rounded-2xl border p-5 ${cardStyles[n.variant ?? "step"]}`}
+        >
+          <h3 className={`font-display text-base font-bold ${cardLabelStyles[n.variant ?? "step"]}`}>
+            {n.label}
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-text-muted">{n.detail}</p>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+/** Desktop: the connected diagram, locked (no pan/zoom/drag) so it stays static. */
+function MindMapFlow() {
   const [selected, setSelected] = useState<MethodNode | null>(null);
 
   const nodes: FlowNode[] = useMemo(
@@ -71,18 +120,25 @@ export function MindMap() {
   }, []);
 
   return (
-    <div className="relative h-[420px] overflow-hidden rounded-2xl border border-line bg-ink-soft/60 sm:h-[480px]">
+    <div className="relative h-[480px] overflow-hidden rounded-2xl border border-line bg-ink-soft/60">
       <ReactFlow
         nodes={nodes}
         edges={edges}
         nodeTypes={nodeTypes}
         onNodeClick={onNodeClick}
         fitView
-        fitViewOptions={{ padding: 0.18 }}
+        fitViewOptions={{ padding: 0.06 }}
+        minZoom={0.1}
+        maxZoom={1.5}
         nodesDraggable={false}
         nodesConnectable={false}
+        nodesFocusable={false}
+        edgesFocusable={false}
         elementsSelectable
         zoomOnScroll={false}
+        zoomOnPinch={false}
+        zoomOnDoubleClick={false}
+        panOnDrag={false}
         panOnScroll={false}
         preventScrolling={false}
         proOptions={{ hideAttribution: true }}
@@ -122,4 +178,9 @@ export function MindMap() {
       </AnimatePresence>
     </div>
   );
+}
+
+export function MindMap() {
+  const isDesktop = useIsDesktop();
+  return isDesktop ? <MindMapFlow /> : <MindMapStacked />;
 }
