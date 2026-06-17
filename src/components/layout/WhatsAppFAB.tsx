@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { MessageCircle } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { site } from "@/data/site";
-import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { openWhatsAppModal } from "@/lib/whatsapp-modal";
 
 export function WhatsAppFAB() {
   const [visible, setVisible] = useState(false);
@@ -19,20 +19,19 @@ export function WhatsAppFAB() {
   return (
     <AnimatePresence>
       {visible && (
-        <motion.a
+        <motion.button
+          type="button"
           initial={{ opacity: 0, scale: 0.6, y: 24 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.6, y: 24 }}
           transition={{ type: "spring", stiffness: 260, damping: 20 }}
-          href={buildWhatsAppLink(`Hola, quiero empezar a entrenar con ${site.name}.`)}
-          target="_blank"
-          rel="noopener noreferrer"
+          onClick={() => openWhatsAppModal(`Hola, quiero empezar a entrenar con ${site.name}.`)}
           aria-label="Escríbenos por WhatsApp"
-          className="fixed bottom-5 right-5 z-50 flex size-14 items-center justify-center rounded-full bg-sky text-ink shadow-glow-fab transition-transform hover:scale-110 active:scale-95 sm:bottom-7 sm:right-7"
+          className="fixed bottom-5 right-5 z-50 flex size-14 cursor-pointer items-center justify-center rounded-full bg-sky text-ink shadow-glow-fab transition-transform hover:scale-110 active:scale-95 sm:bottom-7 sm:right-7"
         >
           <span className="absolute inset-0 animate-pulse-glow rounded-full bg-sky/40" aria-hidden />
           <MessageCircle className="relative size-7" aria-hidden />
-        </motion.a>
+        </motion.button>
       )}
     </AnimatePresence>
   );

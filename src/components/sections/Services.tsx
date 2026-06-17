@@ -2,7 +2,7 @@ import { Dumbbell, Footprints, HeartPulse, Target, Check, MessageCircle } from "
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StaggerGroup, StaggerItem } from "@/components/motion/Reveal";
 import { services, type Service } from "@/data/services";
-import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { WhatsAppTrigger } from "@/components/ui/WhatsAppTrigger";
 
 const icons: Record<Service["icon"], typeof Dumbbell> = {
   dumbbell: Dumbbell,
@@ -64,15 +64,13 @@ export function Services() {
                         </li>
                       ))}
                     </ul>
-                    <a
-                      href={buildWhatsAppLink(service.whatsappMessage)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-auto inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-sky/40 px-6 py-3 font-display text-xs font-bold uppercase tracking-wider text-sky transition-all hover:bg-sky hover:text-ink active:scale-95"
+                    <WhatsAppTrigger
+                      message={service.whatsappMessage}
+                      className="mt-auto inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-full border border-sky/40 px-6 py-3 font-display text-xs font-bold uppercase tracking-wider text-sky transition-all hover:bg-sky hover:text-ink active:scale-95"
                     >
                       <MessageCircle className="size-4" aria-hidden />
                       Consultar por WhatsApp
-                    </a>
+                    </WhatsAppTrigger>
                   </div>
                 </article>
               </StaggerItem>

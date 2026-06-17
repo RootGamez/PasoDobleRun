@@ -6,7 +6,7 @@ import { Menu, X, MessageCircle } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { navigation } from "@/data/navigation";
 import { site } from "@/data/site";
-import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { openWhatsAppModal } from "@/lib/whatsapp-modal";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -51,15 +51,14 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
-          <a
-            href={buildWhatsAppLink(`Hola, quiero más información sobre ${site.name}.`)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-10 items-center gap-2 rounded-full bg-sky px-5 py-2 font-display text-xs font-bold uppercase tracking-wider text-ink transition-all hover:bg-sky-bright hover:shadow-glow-sm active:scale-95"
+          <button
+            type="button"
+            onClick={() => openWhatsAppModal(`Hola, quiero más información sobre ${site.name}.`)}
+            className="inline-flex min-h-10 cursor-pointer items-center gap-2 rounded-full bg-sky px-5 py-2 font-display text-xs font-bold uppercase tracking-wider text-ink transition-all hover:bg-sky-bright hover:shadow-glow-sm active:scale-95"
           >
             <MessageCircle className="size-4" aria-hidden />
             WhatsApp
-          </a>
+          </button>
         </div>
 
         <button
@@ -99,15 +98,14 @@ export function Navbar() {
                   </Link>
                 </motion.div>
               ))}
-              <a
-                href={buildWhatsAppLink(`Hola, quiero más información sobre ${site.name}.`)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-sky px-6 py-4 font-display text-sm font-bold uppercase tracking-wider text-ink"
+              <button
+                type="button"
+                onClick={() => { setOpen(false); openWhatsAppModal(`Hola, quiero más información sobre ${site.name}.`); }}
+                className="mt-6 inline-flex min-h-13 cursor-pointer items-center justify-center gap-2 rounded-full bg-sky px-6 py-4 font-display text-sm font-bold uppercase tracking-wider text-ink"
               >
                 <MessageCircle className="size-5" aria-hidden />
                 Escríbenos por WhatsApp
-              </a>
+              </button>
             </div>
           </motion.div>
         )}

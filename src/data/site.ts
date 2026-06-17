@@ -6,9 +6,10 @@ export const site = {
   url: "https://pasodoblerun.com",
   city: "Caracas · Bogotá",
   country: "Venezuela · Colombia",
-  whatsappNumber: "584120000000",
-  email: "hola@pasodoblerun.com",
-  instagram: "https://instagram.com/pasodoblerun",
+  whatsappNumber: "584243346713",
+  whatsappNumberCO: "573223889865",
+  email: "pasodoblerun@gmail.com",
+  instagram: "https://www.instagram.com/pasodoblerun/",
   instagramHandle: "@pasodoblerun",
   web3formsKey: process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "",
 } as const;

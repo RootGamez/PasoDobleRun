@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFAB } from "@/components/layout/WhatsAppFAB";
+import { WhatsAppCountryModal } from "@/components/ui/WhatsAppCountryModal";
 import { LenisProvider } from "@/components/layout/LenisProvider";
 import { site } from "@/data/site";
 import "@/styles/globals.css";
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
           <Footer />
           <WhatsAppFAB />
+          <WhatsAppCountryModal />
         </LenisProvider>
       </body>
     </html>

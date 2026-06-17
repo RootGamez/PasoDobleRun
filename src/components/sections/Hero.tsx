@@ -9,7 +9,7 @@ import { LoopVideo } from "@/components/ui/LoopVideo";
 import { site } from "@/data/site";
 import { media } from "@/data/media";
 import { heroSteps } from "@/data/methodology";
-import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { openWhatsAppModal } from "@/lib/whatsapp-modal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -127,7 +127,7 @@ export function Hero() {
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <span data-hero-cta>
-              <Button href={buildWhatsAppLink("Hola, quiero empezar a entrenar con Pasodoble Run.")} external>
+              <Button onClick={() => openWhatsAppModal("Hola, quiero empezar a entrenar con Pasodoble Run.")}>
                 <MessageCircle className="size-4" aria-hidden />
                 Empieza hoy
               </Button>

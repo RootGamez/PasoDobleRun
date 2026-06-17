@@ -4,7 +4,6 @@ import { Methodology } from "@/components/sections/Methodology";
 import { Services } from "@/components/sections/Services";
 import { ForumPreview } from "@/components/sections/ForumPreview";
 import { About } from "@/components/sections/About";
-import { Reviews } from "@/components/sections/Reviews";
 import { Contact } from "@/components/sections/Contact";
 
 export default function HomePage() {
@@ -16,7 +15,6 @@ export default function HomePage() {
       <Services />
       <ForumPreview />
       <About />
-      <Reviews />
       <Contact />
     </>
   );

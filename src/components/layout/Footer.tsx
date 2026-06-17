@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Instagram, Mail, MapPin, MessageCircle } from "lucide-react";
 import { footerLinks } from "@/data/navigation";
 import { site } from "@/data/site";
-import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { WhatsAppTrigger } from "@/components/ui/WhatsAppTrigger";
 
 export function Footer() {
   return (
@@ -25,15 +25,13 @@ export function Footer() {
             >
               <Instagram className="size-5" aria-hidden />
             </a>
-            <a
-              href={buildWhatsAppLink("Hola, vengo desde la web de Pasodoble Run.")}
-              target="_blank"
-              rel="noopener noreferrer"
+            <WhatsAppTrigger
+              message="Hola, vengo desde la web de Pasodoble Run."
               aria-label="WhatsApp de Pasodoble Run"
               className="flex size-11 items-center justify-center rounded-full border border-line text-text-muted transition-all hover:border-sky hover:text-sky"
             >
               <MessageCircle className="size-5" aria-hidden />
-            </a>
+            </WhatsAppTrigger>
             <a
               href={`mailto:${site.email}`}
               aria-label="Correo de Pasodoble Run"
