@@ -92,6 +92,7 @@ export function Hero() {
         <LoopVideo
           className="size-full object-cover"
           src={media.heroVideo.src}
+          webm={media.heroVideo.webm}
           poster={media.heroVideo.poster}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/55 to-ink" />
