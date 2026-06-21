@@ -104,20 +104,28 @@ El formulario del sitio envía las reseñas al correo configurado en Web3Forms p
 
 ---
 
-## Despliegue en Cloudflare Pages
+## Despliegue en Cloudflare (Workers & Pages — static assets)
+
+El sitio es export estático: Cloudflare lo sirve como **assets estáticos** vía el
+`wrangler.jsonc` del repo (`assets.directory = ./out`). Esto evita que Cloudflare
+detecte "Next.js" e intente el adaptador OpenNext/SSR (que **rompe** un export
+estático). No hay servidor ni Worker con lógica — solo archivos.
 
 1. Sube el repo a GitHub.
-2. En [Cloudflare Pages](https://pages.cloudflare.com/) → Create a project → Connect to Git.
-3. Selecciona el repo.
-4. Configura el build:
+2. En **Workers & Pages** → Create → Connect to Git → selecciona el repo.
+3. Configura el build:
    - **Build command:** `pnpm build`
-   - **Build output directory:** `out`
-   - **Node.js version:** 20 (en Environment Variables: `NODE_VERSION = 20`). Cloudflare también respeta el `.nvmrc` del repo.
-   - Cloudflare detecta pnpm automáticamente por `pnpm-lock.yaml` y corre `pnpm install`.
+   - **Deploy command:** `npx wrangler deploy` (usa el `wrangler.jsonc` → sube `./out`)
+   - Cloudflare detecta pnpm por `pnpm-lock.yaml` y corre `pnpm install`.
+4. Node 22 (lo exige wrangler 4): se toma del `.nvmrc` del repo. Si fijas
+   `NODE_VERSION` en las env vars, ponlo en `22` (no menos, o wrangler falla).
 5. Agrega variables de entorno:
    - `NEXT_PUBLIC_WEB3FORMS_KEY` = tu access key (sin ella, el botón "Enviar por correo" del formulario falla; el de WhatsApp funciona igual).
-   - `NODE_VERSION` = `20`
+   - `NODE_VERSION` = `22`
 6. Dominio custom: Settings → Custom Domains → agrega tu dominio y apunta el DNS a Cloudflare.
+
+> El nombre del Worker (`name` en `wrangler.jsonc`) es `pasodoble-run` — debe
+> coincidir con el proyecto creado en Cloudflare.
 
 ---
 

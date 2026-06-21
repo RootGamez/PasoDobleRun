@@ -16,7 +16,9 @@ pnpm start       # serve a prior non-export build (rarely needed here)
 pnpm lint        # next lint (ESLint)
 ```
 
-There is no test suite. Validation = `pnpm build` succeeds and the page renders. Node 20+ (pinned in `.nvmrc`). Use pnpm, not npm — mixing package managers creates a conflicting `package-lock.json`.
+There is no test suite. Validation = `pnpm build` succeeds and the page renders. Node 22+ (pinned in `.nvmrc`; wrangler 4 requires ≥22). Use pnpm, not npm — mixing package managers creates a conflicting `package-lock.json`.
+
+Deploy: Cloudflare Workers & Pages serves `out/` as **static assets** via `wrangler.jsonc` (`assets.directory = ./out`, `not_found_handling = 404-page`). Build command `pnpm build`, deploy command `npx wrangler deploy`. The `wrangler.jsonc` is what stops Cloudflare from auto-applying the OpenNext SSR adapter (which is incompatible with `output: "export"`).
 
 ## Hard architectural constraints
 
