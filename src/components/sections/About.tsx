@@ -28,7 +28,7 @@ const team = [
     location: "Caracas, Venezuela",
     bio: "Fisioterapeuta egresado de la Universidad Nacional Rómulo Gallegos con enfoque en evaluación del movimiento humano y rehabilitación basada en evidencia. Cofundador y director de Motion Centro de Rehabilitación y Alto Rendimiento (Los Palos Grandes, Caracas). Ex docente universitario en UNERG y ex fisioterapeuta y coach en el centro multidisciplinario Neuromovimiento.",
     credentials: [
-      "Lcdo. Fisioterapia — UNRG",
+      "Fisioterapeuta — UNRG",
       "EXOS Coaching Methodology — Phoenix, AZ",
       "EXOS Model of Recovery — Phoenix, AZ",
       "Fisioterapia en Osteopatia — Univ. Catolica de Avila, Espana",
@@ -40,9 +40,9 @@ const team = [
     name: "Luis Alejandro Sanchez Cardona",
     role: "Fisioterapeuta & Strength Coach — Cofundador",
     location: "Bogotá, Colombia",
-    bio: "Licenciado en Fisioterapia por la Universidad Arturo Michelena (Valencia) con más de 4 años de experiencia en rehabilitación y acondicionamiento físico de alto rendimiento. Fisioterapeuta del Carabobo Fútbol Club durante 4 años (2021-2025) y actualmente fisioterapeuta de Internacional de Bogotá, equipo de primera división.",
+    bio: "Fisioterapeuta por la Universidad Arturo Michelena (Valencia) con más de 4 años de experiencia en rehabilitación y acondicionamiento físico de alto rendimiento. Fisioterapeuta del Carabobo Fútbol Club durante 4 años (2021-2025) y actualmente fisioterapeuta de Internacional de Bogotá, equipo de primera división.",
     credentials: [
-      "Lcdo. Fisioterapia — UAM, Venezuela",
+      "Fisioterapeuta — UAM, Venezuela",
       "EXOS Fitness & Performance Specialist (2022-2024)",
       "Strength & Conditioning Specialist CSCA 2024",
       "Vald Performance Specialist dynamo+ 2025",
