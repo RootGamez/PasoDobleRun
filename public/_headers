@@ -1,0 +1,16 @@
+# Cloudflare Pages headers
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# Hashed build assets are immutable — cache them for a year.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Local optimized media (versioned manually) — long cache.
+/media/*
+  Cache-Control: public, max-age=31536000, immutable

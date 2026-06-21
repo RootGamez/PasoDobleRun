@@ -54,11 +54,10 @@ const localBusinessJsonLd = {
   description: site.description,
   url: site.url,
   email: site.email,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: site.city,
-    addressCountry: "VE",
-  },
+  areaServed: [
+    { "@type": "City", name: "Caracas", address: { "@type": "PostalAddress", addressCountry: "VE" } },
+    { "@type": "City", name: "Bogotá", address: { "@type": "PostalAddress", addressCountry: "CO" } },
+  ],
   sameAs: [site.instagram],
 };
 

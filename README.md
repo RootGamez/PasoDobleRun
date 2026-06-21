@@ -8,17 +8,17 @@ Landing page para Pasodoble Run: fisioterapia, entrenamiento de fuerza, running 
 
 ```bash
 # Instalar dependencias
-npm install
+pnpm install
 
 # Arrancar servidor de desarrollo
-npm run dev
+pnpm dev
 # → http://localhost:3000
 
 # Build de producción (genera /out)
-npm run build
+pnpm build
 ```
 
-> **Requisito:** Node.js 18+. El proyecto usa `output: "export"` — no hay servidor Node en producción.
+> **Requisito:** Node.js 20+ (fijado en `.nvmrc`). El gestor de paquetes es **pnpm** (`pnpm-lock.yaml` está commiteado) — no mezcles con `npm install`. El proyecto usa `output: "export"` — no hay servidor Node en producción.
 
 ---
 
@@ -70,7 +70,7 @@ references:
 Contenido del artículo en **Markdown**. Puedes usar encabezados, listas, negritas, etc.
 ```
 
-Luego coloca la imagen de portada en `public/posts/mi-imagen.jpg` y vuelve a hacer `npm run build`. El post aparecerá automáticamente en `/foro/` y tendrá su URL en `/foro/titulo-del-articulo/`.
+Luego coloca la imagen de portada en `public/posts/mi-imagen.jpg` y vuelve a hacer `pnpm build`. El post aparecerá automáticamente en `/foro/` y tendrá su URL en `/foro/titulo-del-articulo/`.
 
 Categorías disponibles: `fuerza`, `running`, `fisioterapia`.
 
@@ -110,11 +110,13 @@ El formulario del sitio envía las reseñas al correo configurado en Web3Forms p
 2. En [Cloudflare Pages](https://pages.cloudflare.com/) → Create a project → Connect to Git.
 3. Selecciona el repo.
 4. Configura el build:
-   - **Build command:** `npm run build`
+   - **Build command:** `pnpm build`
    - **Build output directory:** `out`
-   - **Node.js version:** 18 (en Environment Variables: `NODE_VERSION = 18`)
-5. Agrega variables de entorno si usas Web3Forms:
-   - `NEXT_PUBLIC_WEB3FORMS_KEY` = tu access key
+   - **Node.js version:** 20 (en Environment Variables: `NODE_VERSION = 20`). Cloudflare también respeta el `.nvmrc` del repo.
+   - Cloudflare detecta pnpm automáticamente por `pnpm-lock.yaml` y corre `pnpm install`.
+5. Agrega variables de entorno:
+   - `NEXT_PUBLIC_WEB3FORMS_KEY` = tu access key (sin ella, el botón "Enviar por correo" del formulario falla; el de WhatsApp funciona igual).
+   - `NODE_VERSION` = `20`
 6. Dominio custom: Settings → Custom Domains → agrega tu dominio y apunta el DNS a Cloudflare.
 
 ---

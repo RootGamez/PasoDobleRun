@@ -9,13 +9,14 @@ Single-page marketing site (plus a small MDX-driven blog/"foro") for Pasodoble R
 ## Commands
 
 ```bash
-npm run dev      # dev server → http://localhost:3000
-npm run build    # static export → ./out  (this is the production build)
-npm run start    # serve a prior non-export build (rarely needed here)
-npm run lint     # next lint (ESLint)
+pnpm install     # install deps (pnpm is the project's package manager — pnpm-lock.yaml is committed)
+pnpm dev         # dev server → http://localhost:3000
+pnpm build       # static export → ./out  (this is the production build)
+pnpm start       # serve a prior non-export build (rarely needed here)
+pnpm lint        # next lint (ESLint)
 ```
 
-There is no test suite. Validation = `npm run build` succeeds and the page renders. Node 18+.
+There is no test suite. Validation = `pnpm build` succeeds and the page renders. Node 20+ (pinned in `.nvmrc`). Use pnpm, not npm — mixing package managers creates a conflicting `package-lock.json`.
 
 ## Hard architectural constraints
 
